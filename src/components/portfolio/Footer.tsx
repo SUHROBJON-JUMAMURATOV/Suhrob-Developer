@@ -38,7 +38,7 @@ export const Footer = () => {
             <a href="#home" className="flex items-center gap-2">
               <Code2 className="h-7 w-7 text-primary" />
               <span className="font-display font-bold text-xl">
-                Alex<span className="text-gradient">.dev</span>
+                Suhrob<span className="text-gradient">.Developer</span>
               </span>
             </a>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs">
@@ -77,7 +77,7 @@ export const Footer = () => {
         </div>
 
         <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Alex Carter. Crafted with care.</p>
+          <p>© {new Date().getFullYear()} Suhrob.Developer Crafted with care.</p>
           <p className="font-mono">Built with React + Tailwind + Framer Motion</p>
         </div>
       </div>
