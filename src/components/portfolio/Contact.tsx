@@ -56,9 +56,9 @@ export const Contact = () => {
             className="lg:col-span-2 space-y-4"
           >
             {[
-              { Icon: Mail, label: "Email", value: "hello@alexcarter.dev" },
-              { Icon: Phone, label: "Phone", value: "+1 (415) 555-0142" },
-              { Icon: MapPin, label: "Based in", value: "San Francisco, CA" },
+              { Icon: Mail, label: "Email", value: "hello@Suhrobjon1606@gmail.com" },
+              { Icon: Phone, label: "Phone", value: "+998-20-000-3916" },
+              { Icon: MapPin, label: "Based in", value: "Karakalpakstan,Respublikasi" },
             ].map((c) => (
               <div key={c.label} className="glass rounded-2xl p-5 flex items-center gap-4">
                 <div className="h-12 w-12 rounded-xl bg-gradient-primary flex items-center justify-center neon-glow-cyan shrink-0">
