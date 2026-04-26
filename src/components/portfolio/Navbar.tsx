@@ -40,7 +40,7 @@ export const Navbar = () => {
             <div className="absolute inset-0 blur-md bg-primary/40 -z-10" />
           </div>
           <span className="font-display font-bold text-lg tracking-tight">
-            Alex<span className="text-gradient">.dev</span>
+            Suhrob<span className="text-gradient">.Developer</span>
           </span>
         </a>
 
