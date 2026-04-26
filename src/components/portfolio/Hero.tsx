@@ -77,7 +77,7 @@ export const Hero = () => {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight"
         >
-          Hi, I'm <span className="text-gradient">Alex Carter</span>
+          Hi, I'm <span className="text-gradient">Suhrob Developer</span>
         </motion.h1>
 
         <motion.div
