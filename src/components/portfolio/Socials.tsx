@@ -4,10 +4,10 @@ import { SectionTitle } from "./SectionTitle";
 import { cn } from "@/lib/utils";
 
 const socials = [
-  { name: "Telegram", href: "https://t.me/", Icon: Send, color: "primary", handle: "@alexcarter" },
-  { name: "Instagram", href: "https://instagram.com/", Icon: Instagram, color: "accent", handle: "@alex.builds" },
-  { name: "GitHub", href: "https://github.com/", Icon: Github, color: "secondary", handle: "alexcarter" },
-  { name: "LinkedIn", href: "https://linkedin.com/", Icon: Linkedin, color: "primary", handle: "in/alexcarter" },
+  { name: "Telegram", href: "https://t.me/", Icon: Send, color: "primary", handle: "@Suhrob_0775" },
+  { name: "Instagram", href: "https://instagram.com/", Icon: Instagram, color: "accent", handle: "@Suhrob_programmer" },
+  { name: "GitHub", href: "https://github.com/", Icon: Github, color: "secondary", handle: "SUHROB-JUMAMURATOV" },
+  { name: "LinkedIn", href: "https://linkedin.com/", Icon: Linkedin, color: "primary", handle: "in/Suhrob_developer" },
 ];
 
 const colorMap: Record<string, string> = {
