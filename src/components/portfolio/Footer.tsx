@@ -1,5 +1,5 @@
 import { Github, Instagram, Linkedin, Send, Code2 } from "lucide-react";
-import { useLang } from "@/contexts/LanguageContext";
+import { useLang } from "@/hooks/useLang";
 
 const socials = [
   { Icon: Send, href: "https://t.me/", label: "Telegram" },

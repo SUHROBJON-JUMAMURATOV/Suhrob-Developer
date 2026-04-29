@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { SectionTitle } from "./SectionTitle";
 import { toast } from "sonner";
 import { CheckCircle2, Eye, EyeOff, Loader2 } from "lucide-react";
-import { useLang } from "@/contexts/LanguageContext";
+import { useLang } from "@/hooks/useLang";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(60),

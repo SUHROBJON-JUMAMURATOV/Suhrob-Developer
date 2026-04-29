@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Code2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useLang } from "@/contexts/LanguageContext";
+import { useLang } from "@/hooks/useLang";
 import type { Lang } from "@/i18n/translations";
 
 export const Navbar = () => {

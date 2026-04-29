@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Github, Instagram, Linkedin, Send } from "lucide-react";
 import { SectionTitle } from "./SectionTitle";
 import { cn } from "@/lib/utils";
-import { useLang } from "@/contexts/LanguageContext";
+import { useLang } from "@/hooks/useLang";
 
 const socials = [
   { name: "Telegram", href: "https://t.me/", Icon: Send, color: "primary", handle: "@Suhrob_0775" },
