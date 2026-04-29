@@ -10,6 +10,7 @@ import { SectionTitle } from "./SectionTitle";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { Upload, Loader2, CheckCircle2, FileText } from "lucide-react";
+import { useLang } from "@/contexts/LanguageContext";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name required").max(80),
@@ -21,6 +22,7 @@ const schema = z.object({
 const projectTypes = ["Web App", "Mobile App", "SaaS Product", "Landing Page", "AI Integration", "Consulting"];
 
 export const HireForm = () => {
+  const { t } = useLang();
   const [data, setData] = useState({ name: "", email: "", projectType: "", message: "" });
   const [budget, setBudget] = useState([10000]);
   const [file, setFile] = useState<File | null>(null);
@@ -63,9 +65,9 @@ export const HireForm = () => {
     <section id="hire" className="relative py-24 md:py-32">
       <div className="container">
         <SectionTitle
-          eyebrow="Work With Me"
-          title="Have a project in mind?"
-          subtitle="Tell me about your idea — budget, scope, timeline. I'll get back within 24 hours."
+          eyebrow={t.hire.eyebrow}
+          title={t.hire.title}
+          subtitle={t.hire.subtitle}
         />
 
         <motion.form
@@ -77,22 +79,22 @@ export const HireForm = () => {
         >
           <div className="grid sm:grid-cols-2 gap-5">
             <div>
-              <Label htmlFor="hname">Your Name</Label>
+              <Label htmlFor="hname">{t.hire.name}</Label>
               <Input id="hname" value={data.name} onChange={(e) => setData({ ...data, name: e.target.value })} className="mt-2 bg-muted/40" />
               {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
             </div>
             <div>
-              <Label htmlFor="hemail">Email</Label>
+              <Label htmlFor="hemail">{t.hire.email}</Label>
               <Input id="hemail" type="email" value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} className="mt-2 bg-muted/40" />
               {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
             </div>
           </div>
 
           <div>
-            <Label>Project type</Label>
+            <Label>{t.hire.type}</Label>
             <Select value={data.projectType} onValueChange={(v) => setData({ ...data, projectType: v })}>
               <SelectTrigger className="mt-2 bg-muted/40">
-                <SelectValue placeholder="Choose one" />
+                <SelectValue placeholder={t.hire.typePh} />
               </SelectTrigger>
               <SelectContent>
                 {projectTypes.map((p) => (
@@ -105,7 +107,7 @@ export const HireForm = () => {
 
           <div>
             <div className="flex items-center justify-between">
-              <Label>Estimated budget</Label>
+              <Label>{t.hire.budget}</Label>
               <span className="font-mono text-primary text-sm">
                 ${budget[0].toLocaleString()}{budget[0] >= 50000 ? "+" : ""}
               </span>
@@ -117,13 +119,13 @@ export const HireForm = () => {
           </div>
 
           <div>
-            <Label htmlFor="hmsg">Tell me about it</Label>
-            <Textarea id="hmsg" rows={5} placeholder="Goals, scope, timeline, anything that matters…" value={data.message} onChange={(e) => setData({ ...data, message: e.target.value })} className="mt-2 bg-muted/40 resize-none" />
+            <Label htmlFor="hmsg">{t.hire.message}</Label>
+            <Textarea id="hmsg" rows={5} placeholder={t.hire.messagePh} value={data.message} onChange={(e) => setData({ ...data, message: e.target.value })} className="mt-2 bg-muted/40 resize-none" />
             {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
           </div>
 
           <div>
-            <Label>Attach a brief (optional)</Label>
+            <Label>{t.hire.attach}</Label>
             <label className="mt-2 flex items-center justify-center gap-3 px-4 py-6 rounded-xl border border-dashed border-border bg-muted/30 cursor-pointer hover:border-primary/60 hover:bg-muted/40 transition-colors">
               {file ? (
                 <>
@@ -133,7 +135,7 @@ export const HireForm = () => {
               ) : (
                 <>
                   <Upload className="h-5 w-5 text-muted-foreground" />
-                  <span className="text-sm text-muted-foreground">PDF, DOC, or image — up to 10MB</span>
+                  <span className="text-sm text-muted-foreground">{t.hire.upload}</span>
                 </>
               )}
               <input type="file" className="hidden" accept=".pdf,.doc,.docx,image/*" onChange={onFile} />
@@ -142,11 +144,11 @@ export const HireForm = () => {
 
           <Button type="submit" variant="hero" size="xl" className="w-full" disabled={loading || done}>
             {loading ? (
-              <><Loader2 className="h-4 w-4 animate-spin" /> Sending…</>
+              <><Loader2 className="h-4 w-4 animate-spin" /> {t.hire.loading}</>
             ) : done ? (
-              <><CheckCircle2 className="h-4 w-4" /> Sent!</>
+              <><CheckCircle2 className="h-4 w-4" /> {t.hire.done}</>
             ) : (
-              "Submit Application"
+              t.hire.submit
             )}
           </Button>
         </motion.form>

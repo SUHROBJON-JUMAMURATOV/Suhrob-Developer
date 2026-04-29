@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SectionTitle } from "./SectionTitle";
 import { Briefcase, GraduationCap, Rocket, Download } from "lucide-react";
+import { useLang } from "@/contexts/LanguageContext";
 
 const timeline = [
   {
@@ -27,21 +28,16 @@ const timeline = [
   },
 ];
 
-const stats = [
-  { value: "60+", label: "Projects shipped" },
-  { value: "7y", label: "Experience" },
-  { value: "30+", label: "Happy clients" },
-  { value: "12", label: "Open source repos" },
-];
-
 export const About = () => {
+  const { t } = useLang();
+  const stats = t.about.stats;
   return (
     <section id="about" className="relative py-24 md:py-32">
       <div className="container">
         <SectionTitle
-          eyebrow="About Me"
-          title="A short story behind the code"
-          subtitle="I build digital products that feel inevitable — fast, accessible, and designed with care."
+          eyebrow={t.about.eyebrow}
+          title={t.about.title}
+          subtitle={t.about.subtitle}
         />
 
         <div className="grid lg:grid-cols-5 gap-10 mt-16">
@@ -69,14 +65,14 @@ export const About = () => {
             </div>
 
             <div className="glass rounded-2xl p-6">
-              <h3 className="font-display text-xl font-semibold mb-2">Currently exploring</h3>
+              <h3 className="font-display text-xl font-semibold mb-2">{t.about.exploring}</h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Edge AI inference, WebGPU, and design engineering. Always curious, always learning.
+                {t.about.exploringDesc}
               </p>
               <Button variant="hero" size="lg" asChild className="w-full">
                 <a href="#" download>
                   <Download className="h-4 w-4" />
-                  Download CV
+                  {t.about.downloadCv}
                 </a>
               </Button>
             </div>

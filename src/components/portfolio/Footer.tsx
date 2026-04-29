@@ -1,25 +1,5 @@
 import { Github, Instagram, Linkedin, Send, Code2 } from "lucide-react";
-
-const sections = [
-  {
-    title: "Navigation",
-    links: [
-      { href: "#home", label: "Home" },
-      { href: "#about", label: "About" },
-      { href: "#projects", label: "Projects" },
-      { href: "#contact", label: "Contact" },
-    ],
-  },
-  {
-    title: "Services",
-    links: [
-      { href: "#hire", label: "Web Development" },
-      { href: "#hire", label: "UI/UX Design" },
-      { href: "#hire", label: "Consulting" },
-      { href: "#hire", label: "AI Integration" },
-    ],
-  },
-];
+import { useLang } from "@/contexts/LanguageContext";
 
 const socials = [
   { Icon: Send, href: "https://t.me/", label: "Telegram" },
@@ -29,6 +9,27 @@ const socials = [
 ];
 
 export const Footer = () => {
+  const { t } = useLang();
+  const sections = [
+    {
+      title: t.footer.nav,
+      links: [
+        { href: "#home", label: t.nav.home },
+        { href: "#about", label: t.nav.about },
+        { href: "#projects", label: t.nav.projects },
+        { href: "#contact", label: t.nav.contact },
+      ],
+    },
+    {
+      title: t.footer.services,
+      links: [
+        { href: "#hire", label: "Web Development" },
+        { href: "#hire", label: "UI/UX Design" },
+        { href: "#hire", label: "Consulting" },
+        { href: "#hire", label: "AI Integration" },
+      ],
+    },
+  ];
   return (
     <footer className="relative border-t border-border mt-20">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
@@ -38,11 +39,11 @@ export const Footer = () => {
             <a href="#home" className="flex items-center gap-2">
               <Code2 className="h-7 w-7 text-primary" />
               <span className="font-display font-bold text-xl">
-                Suhrob<span className="text-gradient">.Developer</span>
+                Jumamuratov<span className="text-gradient">.Suhrobjon</span>
               </span>
             </a>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs">
-              Full-stack developer crafting fast, beautiful, and scalable web experiences.
+              {t.footer.tagline}
             </p>
             <div className="mt-5 flex items-center gap-3">
               {socials.map((s) => (
@@ -77,7 +78,7 @@ export const Footer = () => {
         </div>
 
         <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Suhrob.Developer Crafted with care.</p>
+          <p>© {new Date().getFullYear()} Jumamuratov Suhrobjon. {t.footer.rights}</p>
           <p className="font-mono">Built with React + Tailwind + Framer Motion</p>
         </div>
       </div>

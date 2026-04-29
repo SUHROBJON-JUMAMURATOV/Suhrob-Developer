@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
+import { useLang } from "@/contexts/LanguageContext";
 import p1 from "@/assets/project-1.jpg";
 import p2 from "@/assets/project-2.jpg";
 import p3 from "@/assets/project-3.jpg";
@@ -59,15 +60,16 @@ const projects = [
 
 export const Projects = () => {
   const [open, setOpen] = useState<number | null>(null);
+  const { t } = useLang();
   const active = open !== null ? projects[open] : null;
 
   return (
     <section id="projects" className="relative py-24 md:py-32">
       <div className="container">
         <SectionTitle
-          eyebrow="Selected Work"
-          title="Projects I'm proud of"
-          subtitle="A glimpse into recent work — click any card to dive into the details."
+          eyebrow={t.projects.eyebrow}
+          title={t.projects.title}
+          subtitle={t.projects.subtitle}
         />
 
         <div className="mt-16 grid sm:grid-cols-2 gap-6">
@@ -163,12 +165,12 @@ export const Projects = () => {
                 <div className="mt-6 flex flex-wrap gap-3">
                   <Button variant="hero" asChild>
                     <a href={active.live} target="_blank" rel="noreferrer">
-                      <ExternalLink className="h-4 w-4" /> Live Demo
+                      <ExternalLink className="h-4 w-4" /> {t.projects.live}
                     </a>
                   </Button>
                   <Button variant="neon" asChild>
                     <a href={active.repo} target="_blank" rel="noreferrer">
-                      <Github className="h-4 w-4" /> Source Code
+                      <Github className="h-4 w-4" /> {t.projects.source}
                     </a>
                   </Button>
                 </div>

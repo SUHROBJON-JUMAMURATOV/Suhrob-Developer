@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { cn } from "@/lib/utils";
+import { useLang } from "@/contexts/LanguageContext";
 
 type Category = "All" | "Frontend" | "Backend" | "Tools";
 
@@ -24,15 +25,16 @@ const categories: Category[] = ["All", "Frontend", "Backend", "Tools"];
 
 export const Skills = () => {
   const [active, setActive] = useState<Category>("All");
+  const { t } = useLang();
   const filtered = active === "All" ? skills : skills.filter((s) => s.category === active);
 
   return (
     <section id="skills" className="relative py-24 md:py-32">
       <div className="container">
         <SectionTitle
-          eyebrow="Skills"
-          title="Tools I use every day"
-          subtitle="A flexible toolkit refined over years of shipping production software."
+          eyebrow={t.skills.eyebrow}
+          title={t.skills.title}
+          subtitle={t.skills.subtitle}
         />
 
         <div className="flex flex-wrap items-center justify-center gap-2 mt-10">
@@ -47,7 +49,7 @@ export const Skills = () => {
                   : "glass border-border text-muted-foreground hover:text-foreground"
               )}
             >
-              {c}
+              {t.skills.categories[c]}
             </button>
           ))}
         </div>
