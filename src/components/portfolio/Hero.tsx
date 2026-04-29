@@ -3,15 +3,10 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Briefcase, UserPlus } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import avatar from "@/assets/avatar.jpg";
+import { useLang } from "@/contexts/LanguageContext";
 
-const phrases = [
-  "Full-Stack Developer",
-  "UI/UX Enthusiast",
-  "AI Tinkerer",
-  "Problem Solver",
-];
-
-const useTyping = () => {
+const useTyping = (phrases: readonly string[]) => {
   const [text, setText] = useState("");
   const [idx, setIdx] = useState(0);
   const [del, setDel] = useState(false);
@@ -32,13 +27,14 @@ const useTyping = () => {
       setText(del ? current.slice(0, text.length - 1) : current.slice(0, text.length + 1));
     }, speed);
     return () => clearTimeout(t);
-  }, [text, del, idx]);
+  }, [text, del, idx, phrases]);
 
   return text;
 };
 
 export const Hero = () => {
-  const typed = useTyping();
+  const { t } = useLang();
+  const typed = useTyping(t.hero.roles);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24">
@@ -68,16 +64,32 @@ export const Hero = () => {
           className="inline-flex items-center gap-2 glass px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-widest mb-8"
         >
           <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-          Available for new projects
+          {t.hero.badge}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, delay: 0.05 }}
+          className="mx-auto mb-8 relative w-32 h-32 md:w-40 md:h-40"
+        >
+          <div className="absolute inset-0 rounded-full bg-gradient-primary blur-2xl opacity-60 animate-pulse-glow" />
+          <div className="relative w-full h-full rounded-full p-[3px] bg-gradient-to-br from-primary via-secondary to-accent">
+            <img
+              src={avatar}
+              alt="JUMAMURATOV SUHROBJON XAMZAYEVICH"
+              className="w-full h-full rounded-full object-cover bg-background"
+            />
+          </div>
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight"
+          className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight"
         >
-          Hi, I'm <span className="text-gradient">Suhrob Developer</span>
+          {t.hero.greeting} <span className="text-gradient block sm:inline mt-2 sm:mt-0">{t.hero.name}</span>
         </motion.h1>
 
         <motion.div
@@ -95,8 +107,7 @@ export const Hero = () => {
           transition={{ duration: 0.7, delay: 0.5 }}
           className="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto"
         >
-          I craft fast, beautiful, and scalable web applications with modern technologies.
-          Turning complex problems into elegant digital experiences.
+          {t.hero.desc}
         </motion.p>
 
         <motion.div
@@ -107,17 +118,17 @@ export const Hero = () => {
         >
           <Button asChild variant="hero" size="xl">
             <a href="#projects">
-              View Projects <ArrowRight className="h-4 w-4" />
+              {t.hero.viewProjects} <ArrowRight className="h-4 w-4" />
             </a>
           </Button>
           <Button asChild variant="neon" size="xl">
             <a href="#hire">
-              <Briefcase className="h-4 w-4" /> Hire Me
+              <Briefcase className="h-4 w-4" /> {t.hero.hireMe}
             </a>
           </Button>
           <Button asChild variant="ghostGlass" size="xl">
             <a href="#register">
-              <UserPlus className="h-4 w-4" /> Register
+              <UserPlus className="h-4 w-4" /> {t.hero.register}
             </a>
           </Button>
         </motion.div>

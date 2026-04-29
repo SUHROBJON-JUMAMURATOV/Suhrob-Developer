@@ -2,20 +2,29 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Code2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const links = [
-  { href: "#home", label: "Home" },
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#projects", label: "Projects" },
-  { href: "#register", label: "Register" },
-  { href: "#hire", label: "Hire Me" },
-  { href: "#contact", label: "Contact" },
-];
+import { useLang } from "@/contexts/LanguageContext";
+import type { Lang } from "@/i18n/translations";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { lang, setLang, t } = useLang();
+
+  const links = [
+    { href: "#home", label: t.nav.home },
+    { href: "#about", label: t.nav.about },
+    { href: "#skills", label: t.nav.skills },
+    { href: "#projects", label: t.nav.projects },
+    { href: "#register", label: t.nav.register },
+    { href: "#hire", label: t.nav.hire },
+    { href: "#contact", label: t.nav.contact },
+  ];
+
+  const langs: { code: Lang; label: string }[] = [
+    { code: "uz", label: "UZ" },
+    { code: "ru", label: "RU" },
+    { code: "en", label: "EN" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -58,13 +67,31 @@ export const Navbar = () => {
           ))}
         </ul>
 
-        <button
-          className="lg:hidden p-2 text-foreground"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <div className="hidden sm:flex items-center gap-1 glass rounded-full p-1">
+            {langs.map((l) => (
+              <button
+                key={l.code}
+                onClick={() => setLang(l.code)}
+                className={cn(
+                  "px-3 py-1 text-xs font-mono font-semibold rounded-full transition-all",
+                  lang === l.code
+                    ? "bg-gradient-primary text-primary-foreground shadow-[0_0_15px_hsl(180_100%_50%/0.5)]"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                {l.label}
+              </button>
+            ))}
+          </div>
+          <button
+            className="lg:hidden p-2 text-foreground"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -87,6 +114,22 @@ export const Navbar = () => {
                   </a>
                 </li>
               ))}
+              <li className="flex items-center gap-1 glass rounded-full p-1 mt-2 self-start sm:hidden">
+                {langs.map((l) => (
+                  <button
+                    key={l.code}
+                    onClick={() => setLang(l.code)}
+                    className={cn(
+                      "px-3 py-1 text-xs font-mono font-semibold rounded-full transition-all",
+                      lang === l.code
+                        ? "bg-gradient-primary text-primary-foreground"
+                        : "text-muted-foreground"
+                    )}
+                  >
+                    {l.label}
+                  </button>
+                ))}
+              </li>
             </ul>
           </motion.div>
         )}
