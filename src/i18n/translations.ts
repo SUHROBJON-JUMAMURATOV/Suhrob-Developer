@@ -6,7 +6,7 @@ export const translations = {
     hero: {
       badge: "Yangi loyihalar uchun ochiqman",
       greeting: "Salom, men",
-      name: "JUMAMURATOV SUHROBJON XAMZAYEVICH",
+      name: "Suhrob.Developer",
       desc: "Men zamonaviy texnologiyalar bilan tez, chiroyli va kengaytiriladigan veb-ilovalar yarataman. Murakkab muammolarni nafis raqamli yechimlarga aylantiraman.",
       viewProjects: "Loyihalarni ko'rish",
       hireMe: "Meni yollash",
@@ -40,7 +40,7 @@ export const translations = {
     hero: {
       badge: "Открыт для новых проектов",
       greeting: "Привет, я",
-      name: "ЖУМАМУРАТОВ СУХРОБЖОН ХАМЗАЕВИЧ",
+      name: "Suhrob.Developer",
       desc: "Я создаю быстрые, красивые и масштабируемые веб-приложения с помощью современных технологий. Превращаю сложные задачи в элегантные цифровые решения.",
       viewProjects: "Смотреть проекты",
       hireMe: "Нанять меня",
@@ -74,7 +74,7 @@ export const translations = {
     hero: {
       badge: "Available for new projects",
       greeting: "Hi, I'm",
-      name: "JUMAMURATOV SUHROBJON XAMZAYEVICH",
+      name: "Suhrob.Developer",
       desc: "I craft fast, beautiful, and scalable web applications with modern technologies. Turning complex problems into elegant digital experiences.",
       viewProjects: "View Projects",
       hireMe: "Hire Me",
