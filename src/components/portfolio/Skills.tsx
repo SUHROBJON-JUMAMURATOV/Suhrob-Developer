@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { SectionTitle } from "./SectionTitle";
 import { cn } from "@/lib/utils";
-import { useLang } from "@/contexts/LanguageContext";
+import { useLang } from "@/hooks/useLang";
 
 type Category = "All" | "Frontend" | "Backend" | "Tools";
 

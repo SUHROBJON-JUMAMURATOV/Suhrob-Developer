@@ -10,7 +10,7 @@ import { SectionTitle } from "./SectionTitle";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { Upload, Loader2, CheckCircle2, FileText } from "lucide-react";
-import { useLang } from "@/contexts/LanguageContext";
+import { useLang } from "@/hooks/useLang";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name required").max(80),

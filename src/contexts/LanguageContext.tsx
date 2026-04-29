@@ -1,9 +1,9 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useEffect, useState, ReactNode } from "react";
 import { translations, type Lang, type Translation } from "@/i18n/translations";
 
-type Ctx = { lang: Lang; setLang: (l: Lang) => void; t: Translation };
+export type LanguageCtx = { lang: Lang; setLang: (l: Lang) => void; t: Translation };
 
-const LanguageContext = createContext<Ctx | null>(null);
+export const LanguageContext = createContext<LanguageCtx | null>(null);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [lang, setLangState] = useState<Lang>(() => {
@@ -20,10 +20,4 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const t = translations[lang] as Translation;
 
   return <LanguageContext.Provider value={{ lang, setLang, t }}>{children}</LanguageContext.Provider>;
-};
-
-export const useLang = () => {
-  const ctx = useContext(LanguageContext);
-  if (!ctx) throw new Error("useLang must be used within LanguageProvider");
-  return ctx;
 };

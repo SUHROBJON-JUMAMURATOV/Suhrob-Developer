@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { SectionTitle } from "./SectionTitle";
 import { Briefcase, GraduationCap, Rocket, Download } from "lucide-react";
-import { useLang } from "@/contexts/LanguageContext";
+import { useLang } from "@/hooks/useLang";
 
 const timeline = [
   {

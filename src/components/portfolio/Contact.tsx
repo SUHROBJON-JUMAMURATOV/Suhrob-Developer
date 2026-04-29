@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { SectionTitle } from "./SectionTitle";
 import { toast } from "sonner";
 import { Mail, MapPin, Phone, Loader2, CheckCircle2, Send } from "lucide-react";
-import { useLang } from "@/contexts/LanguageContext";
+import { useLang } from "@/hooks/useLang";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name required").max(80),

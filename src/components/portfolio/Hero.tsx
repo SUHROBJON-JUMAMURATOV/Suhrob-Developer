@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Briefcase, UserPlus } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import avatar from "@/assets/avatar.jpg";
-import { useLang } from "@/contexts/LanguageContext";
+import { useLang } from "@/hooks/useLang";
 
 const useTyping = (phrases: readonly string[]) => {
   const [text, setText] = useState("");
