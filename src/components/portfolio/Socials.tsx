@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Github, Instagram, Linkedin, Send } from "lucide-react";
 import { SectionTitle } from "./SectionTitle";
 import { cn } from "@/lib/utils";
+import { useLang } from "@/contexts/LanguageContext";
 
 const socials = [
   { name: "Telegram", href: "https://t.me/", Icon: Send, color: "primary", handle: "@Suhrob_0775" },
@@ -17,10 +18,11 @@ const colorMap: Record<string, string> = {
 };
 
 export const Socials = () => {
+  const { t } = useLang();
   return (
     <section id="socials" className="relative py-20">
       <div className="container">
-        <SectionTitle eyebrow="Connect" title="Find me online" />
+        <SectionTitle eyebrow={t.socials.eyebrow} title={t.socials.title} />
 
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
           {socials.map((s, i) => (

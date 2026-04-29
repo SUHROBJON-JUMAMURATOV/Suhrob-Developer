@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { SectionTitle } from "./SectionTitle";
 import { toast } from "sonner";
 import { Mail, MapPin, Phone, Loader2, CheckCircle2, Send } from "lucide-react";
+import { useLang } from "@/contexts/LanguageContext";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name required").max(80),
@@ -17,6 +18,7 @@ const schema = z.object({
 });
 
 export const Contact = () => {
+  const { t } = useLang();
   const [data, setData] = useState({ name: "", email: "", subject: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(false);
@@ -46,7 +48,7 @@ export const Contact = () => {
   return (
     <section id="contact" className="relative py-24 md:py-32">
       <div className="container">
-        <SectionTitle eyebrow="Contact" title="Let's build something" subtitle="Got a question or just want to say hi? My inbox is always open." />
+        <SectionTitle eyebrow={t.contact.eyebrow} title={t.contact.title} subtitle={t.contact.subtitle} />
 
         <div className="mt-12 grid lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
           <motion.div
@@ -56,9 +58,9 @@ export const Contact = () => {
             className="lg:col-span-2 space-y-4"
           >
             {[
-              { Icon: Mail, label: "Email", value: "hello@Suhrobjon1606@gmail.com" },
-              { Icon: Phone, label: "Phone", value: "+998-20-000-3916" },
-              { Icon: MapPin, label: "Based in", value: "Karakalpakstan,Respublikasi" },
+              { Icon: Mail, label: t.contact.emailLabel, value: "Suhrobjon1606@gmail.com" },
+              { Icon: Phone, label: t.contact.phoneLabel, value: "+998-20-000-3916" },
+              { Icon: MapPin, label: t.contact.locationLabel, value: t.contact.location },
             ].map((c) => (
               <div key={c.label} className="glass rounded-2xl p-5 flex items-center gap-4">
                 <div className="h-12 w-12 rounded-xl bg-gradient-primary flex items-center justify-center neon-glow-cyan shrink-0">
@@ -81,33 +83,33 @@ export const Contact = () => {
           >
             <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <Label htmlFor="cname">Name</Label>
+                <Label htmlFor="cname">{t.contact.name}</Label>
                 <Input id="cname" value={data.name} onChange={(e) => setData({ ...data, name: e.target.value })} className="mt-2 bg-muted/40" />
                 {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
               </div>
               <div>
-                <Label htmlFor="cemail">Email</Label>
+                <Label htmlFor="cemail">{t.contact.email}</Label>
                 <Input id="cemail" type="email" value={data.email} onChange={(e) => setData({ ...data, email: e.target.value })} className="mt-2 bg-muted/40" />
                 {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
               </div>
             </div>
             <div>
-              <Label htmlFor="csub">Subject</Label>
+              <Label htmlFor="csub">{t.contact.subject}</Label>
               <Input id="csub" value={data.subject} onChange={(e) => setData({ ...data, subject: e.target.value })} className="mt-2 bg-muted/40" />
               {errors.subject && <p className="text-xs text-destructive mt-1">{errors.subject}</p>}
             </div>
             <div>
-              <Label htmlFor="cmsg">Message</Label>
+              <Label htmlFor="cmsg">{t.contact.message}</Label>
               <Textarea id="cmsg" rows={5} value={data.message} onChange={(e) => setData({ ...data, message: e.target.value })} className="mt-2 bg-muted/40 resize-none" />
               {errors.message && <p className="text-xs text-destructive mt-1">{errors.message}</p>}
             </div>
             <Button type="submit" variant="hero" size="xl" className="w-full" disabled={loading || done}>
               {loading ? (
-                <><Loader2 className="h-4 w-4 animate-spin" /> Sending…</>
+                <><Loader2 className="h-4 w-4 animate-spin" /> {t.contact.loading}</>
               ) : done ? (
-                <><CheckCircle2 className="h-4 w-4" /> Sent</>
+                <><CheckCircle2 className="h-4 w-4" /> {t.contact.done}</>
               ) : (
-                <><Send className="h-4 w-4" /> Send Message</>
+                <><Send className="h-4 w-4" /> {t.contact.submit}</>
               )}
             </Button>
           </motion.form>

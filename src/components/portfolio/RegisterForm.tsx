@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { SectionTitle } from "./SectionTitle";
 import { toast } from "sonner";
 import { CheckCircle2, Eye, EyeOff, Loader2 } from "lucide-react";
+import { useLang } from "@/contexts/LanguageContext";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name must be at least 2 characters").max(60),
@@ -22,6 +23,7 @@ const schema = z.object({
 type FieldErrors = Partial<Record<keyof z.infer<typeof schema>, string>>;
 
 export const RegisterForm = () => {
+  const { t } = useLang();
   const [data, setData] = useState({ name: "", email: "", password: "" });
   const [errors, setErrors] = useState<FieldErrors>({});
   const [show, setShow] = useState(false);
@@ -52,7 +54,7 @@ export const RegisterForm = () => {
   return (
     <section id="register" className="relative py-24 md:py-32">
       <div className="container">
-        <SectionTitle eyebrow="Join" title="Create your account" subtitle="Get early access to my newsletter, tutorials, and free templates." />
+        <SectionTitle eyebrow={t.register.eyebrow} title={t.register.title} subtitle={t.register.subtitle} />
 
         <motion.form
           onSubmit={onSubmit}
@@ -62,10 +64,10 @@ export const RegisterForm = () => {
           className="mt-12 max-w-xl mx-auto glass rounded-3xl p-8 space-y-5"
         >
           <div>
-            <Label htmlFor="name">Full Name</Label>
+            <Label htmlFor="name">{t.register.name}</Label>
             <Input
               id="name"
-              placeholder="Jane Doe"
+              placeholder="Jumamuratov Suhrobjon"
               value={data.name}
               onChange={(e) => setData({ ...data, name: e.target.value })}
               className="mt-2 bg-muted/40 border-border focus-visible:ring-primary"
@@ -73,7 +75,7 @@ export const RegisterForm = () => {
             {errors.name && <p className="text-xs text-destructive mt-1">{errors.name}</p>}
           </div>
           <div>
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">{t.register.email}</Label>
             <Input
               id="email"
               type="email"
@@ -85,7 +87,7 @@ export const RegisterForm = () => {
             {errors.email && <p className="text-xs text-destructive mt-1">{errors.email}</p>}
           </div>
           <div>
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">{t.register.password}</Label>
             <div className="relative mt-2">
               <Input
                 id="password"
@@ -108,11 +110,11 @@ export const RegisterForm = () => {
           </div>
           <Button type="submit" variant="hero" size="xl" className="w-full" disabled={loading || done}>
             {loading ? (
-              <><Loader2 className="h-4 w-4 animate-spin" /> Creating account…</>
+              <><Loader2 className="h-4 w-4 animate-spin" /> {t.register.loading}</>
             ) : done ? (
-              <><CheckCircle2 className="h-4 w-4" /> Account created</>
+              <><CheckCircle2 className="h-4 w-4" /> {t.register.done}</>
             ) : (
-              "Create Account"
+              t.register.submit
             )}
           </Button>
         </motion.form>
