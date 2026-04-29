@@ -71,7 +71,7 @@ export const Hero = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.05 }}
-          className="mx-auto mb-8 relative w-32 h-32 md:w-40 md:h-40"
+          className="mx-auto mb-6 relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40"
         >
           <div className="absolute inset-0 rounded-full bg-gradient-primary blur-2xl opacity-60 animate-pulse-glow" />
           <div className="relative w-full h-full rounded-full p-[3px] bg-gradient-to-br from-primary via-secondary to-accent">
@@ -87,7 +87,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight"
+          className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.05] tracking-tight break-words"
         >
           {t.hero.greeting} <span className="text-gradient">{t.hero.name}</span>
         </motion.h1>
@@ -96,7 +96,7 @@ export const Hero = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="mt-6 text-xl md:text-2xl font-mono text-muted-foreground h-8"
+          className="mt-6 text-base sm:text-xl md:text-2xl font-mono text-muted-foreground h-8"
         >
           <span className="cursor-blink neon-text-cyan">{typed}</span>
         </motion.div>
@@ -105,7 +105,7 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-6 text-base md:text-lg text-muted-foreground max-w-2xl mx-auto"
+          className="mt-6 text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-2"
         >
           {t.hero.desc}
         </motion.p>

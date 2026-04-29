@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { SectionTitle } from "./SectionTitle";
-import { Briefcase, GraduationCap, Rocket, Download } from "lucide-react";
+import { Briefcase, GraduationCap, Rocket, Sparkles, Code2, Cpu } from "lucide-react";
 import { useLang } from "@/hooks/useLang";
 
 const timeline = [
@@ -64,17 +63,41 @@ export const About = () => {
               </div>
             </div>
 
-            <div className="glass rounded-2xl p-6">
-              <h3 className="font-display text-xl font-semibold mb-2">{t.about.exploring}</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                {t.about.exploringDesc}
-              </p>
-              <Button variant="hero" size="lg" asChild className="w-full">
-                <a href="#" download>
-                  <Download className="h-4 w-4" />
-                  {t.about.downloadCv}
-                </a>
-              </Button>
+            <div className="glass rounded-2xl p-6 relative overflow-hidden h-56 flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10" />
+              <motion.div
+                className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-primary/30 blur-3xl"
+                animate={{ scale: [1, 1.3, 1], opacity: [0.4, 0.7, 0.4] }}
+                transition={{ duration: 4, repeat: Infinity }}
+              />
+              <motion.div
+                className="absolute -bottom-10 -left-10 w-40 h-40 rounded-full bg-accent/30 blur-3xl"
+                animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.3, 0.5] }}
+                transition={{ duration: 5, repeat: Infinity }}
+              />
+              <div className="relative flex items-center gap-6">
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                  className="h-16 w-16 rounded-2xl glass flex items-center justify-center neon-glow-cyan"
+                >
+                  <Code2 className="h-7 w-7 text-primary" />
+                </motion.div>
+                <motion.div
+                  animate={{ y: [-6, 6, -6] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  className="h-16 w-16 rounded-2xl glass flex items-center justify-center neon-glow-magenta"
+                >
+                  <Sparkles className="h-7 w-7 text-accent" />
+                </motion.div>
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+                  className="h-16 w-16 rounded-2xl glass flex items-center justify-center neon-glow-purple"
+                >
+                  <Cpu className="h-7 w-7 text-secondary" />
+                </motion.div>
+              </div>
             </div>
           </motion.div>
 
