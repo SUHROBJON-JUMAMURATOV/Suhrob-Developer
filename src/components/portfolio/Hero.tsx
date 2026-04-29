@@ -87,9 +87,9 @@ export const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight"
+          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] tracking-tight"
         >
-          {t.hero.greeting} <span className="text-gradient block sm:inline mt-2 sm:mt-0">{t.hero.name}</span>
+          {t.hero.greeting} <span className="text-gradient">{t.hero.name}</span>
         </motion.h1>
 
         <motion.div
